@@ -35,15 +35,15 @@
 			};
 
 			var _subscribers = {
-				basic : null,
-				carAll : null,
-				childCare : null,
-				tax : null,
-				salary : null	
+				basic : [],
+				carAll : [],
+				childCare : [],
+				tax : [],
+				salary : []	
 			};
 
 			this.subscribe = function(attrName, subscriptionFn){
-				_subscribers[attrName] = subscriptionFn;
+				_subscribers[attrName].push(subscriptionFn);
 			};
 
 			this.get = function(attrName){
@@ -53,9 +53,12 @@
 			this.set = function(attrName, value){
 				if (_data[attrName] === value) return;
 				_data[attrName] = value;
-				var subscriptionFn = _subscribers[attrName];
-				if (typeof subscriptionFn === 'function')
-					subscriptionFn();
+				var subscriptionFns = _subscribers[attrName];
+				subscriptionFns.forEach(subscriptionFn => {
+					if (typeof subscriptionFn === 'function')
+						subscriptionFn();	
+				});
+				
 			}
 		}
 		SalaryCalculatorModel.prototype.calculate = function() {
