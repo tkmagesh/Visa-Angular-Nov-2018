@@ -4,7 +4,7 @@ import { Component, Input } from '@angular/core';
 	selector : 'app-calculator-result',
 	template : `
 		<div [ngClass]="{positive : data >= 0, negative : data < 0}">
-			{{data}}
+			{{data | currency:'GBP'}}
 		</div>
 	`,
 	styles : ['.positive { color : green}', '.negative {color : red']

@@ -9,7 +9,9 @@ import { Component } from '@angular/core';
 		<input type="text" #txtProductName />
 		<input type="button" value="Add To List" (click) = "products.push(txtProductName.value)" />
 		<ol>
-			<li *ngFor="let product of products">{{product}}</li>
+			<li *ngFor="let product of products">
+				{{product | uppercase}}
+			</li>
 		</ol>
 	`,
 })
