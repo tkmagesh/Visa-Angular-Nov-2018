@@ -7,6 +7,8 @@ import { CalculatorTwoComponent } from './calculator/calculatorTwo.component';
 import { CalculatorResultComponent } from './calculator/calculatorResult.component';
 import { ProductsComponent } from './products/products.component';
 
+import { CalculatorModel } from './calculator/calculatorModel';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -18,7 +20,9 @@ import { ProductsComponent } from './products/products.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [
+    CalculatorModel
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

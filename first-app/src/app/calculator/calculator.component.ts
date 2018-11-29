@@ -7,5 +7,9 @@ import { CalculatorModel } from './calculatorModel';
 	styleUrls : ['calculator.component.css']
 })
 export class CalculatorComponent{
-	model : CalculatorModel = new CalculatorModel();
+	//model : CalculatorModel;
+
+	constructor(private model : CalculatorModel){
+		//this.model = _calculatorModel;
+	}
 }
