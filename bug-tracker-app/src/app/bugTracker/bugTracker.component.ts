@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { BugOperationsService } from './services/bugOperations.service';
 import { Bug } from './models/Bug';
 
+import * as moment from 'moment';
+
+
 @Component({
 	selector : 'app-bug-tracker',
 	templateUrl : 'bugTracker.component.html'
@@ -25,9 +28,10 @@ export class BugTrackerComponent{
 		this.bugs = [...this.bugs, newBug];
 	}
 
-	onBugClick(bugToToggle : Bug){
-		this.bugOperations.toggle(bugToToggle)
-		this.bugs = [...this.bugs];
+	onBugToggle(toggledBug : Bug){
+		//console.log(toggledBug);
+		this.bugs = this.bugs.map(bug => bug.name === toggledBug.name ? toggledBug : bug);
+		//this.bugs = [...this.bugs];
 	}
 
 	onRemoveClosedClick(){

@@ -5,12 +5,15 @@ import { AppComponent } from './app.component';
 import { BugTrackerComponent } from './bugTracker/bugTracker.component';
 import { BugOperationsService } from './bugTracker/services/bugOperations.service';
 
-import { TrimTextPipe } from './bugTracker/pipes/trimText.pipe';
-import { SortPipe } from './bugTracker/pipes/sort.pipe';
+
 import { ClosedCountPipe } from './bugTracker/pipes/closedCount.pipe';
 
 import { BugStatsComponent } from './bugTracker/views/bugStats.component';
 import { BugEditComponent } from './bugTracker/views/bugEdit.component';
+import { BugItemComponent } from './bugTracker/views/bugItem.component';
+import { BugDisplayComponent } from './bugTracker/views/bugDisplay.component';
+
+import { UtilsModule } from './utils/utils.module';
 
 @NgModule({
   declarations: [
@@ -18,12 +21,13 @@ import { BugEditComponent } from './bugTracker/views/bugEdit.component';
     , BugTrackerComponent
     , BugStatsComponent
     , BugEditComponent
-    , TrimTextPipe
-    , SortPipe
+    , BugItemComponent
+    , BugDisplayComponent
     , ClosedCountPipe
   ],
   imports: [
     BrowserModule
+    , UtilsModule
   ],
   providers: [
   	BugOperationsService

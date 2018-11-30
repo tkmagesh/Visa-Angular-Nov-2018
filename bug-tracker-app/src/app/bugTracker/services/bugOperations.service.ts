@@ -4,13 +4,15 @@ export class BugOperationsService{
 	createNew(bugName : string) : Bug {
 		const newBug = {
 				name : bugName,
-				isClosed : false
+				isClosed : false,
+				createdAt : new Date()
 			};
 		return newBug;
 	}
-	toggle(bugToToggle : Bug) : void {
-		/*const toggledBug = { ...bugToToggle, isClosed : false};
-		return toggledBug;*/
-		bugToToggle.isClosed = !bugToToggle.isClosed;
+	toggle(bugToToggle : Bug) {
+		const toggledBug = { ...bugToToggle, isClosed : !bugToToggle.isClosed};
+		return toggledBug;
+		/*bugToToggle.isClosed = !bugToToggle.isClosed;
+		console.log(bugToToggle);*/
 	}
 }

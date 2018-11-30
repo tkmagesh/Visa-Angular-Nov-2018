@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { BugOperationsService } from '../services/bugOperations.service';
 import { Bug } from '../models/Bug';
 
@@ -11,7 +11,8 @@ import { Bug } from '../models/Bug';
 			<span> [ {{newBugName.length}} ] </span>
 			<input type="button" value="Add New" (click)="onAddNewClick()">
 		</section>
-	`
+	`,
+	changeDetection : ChangeDetectionStrategy.OnPush
 })
 export class BugEditComponent{
 	newBugName : string = '';
