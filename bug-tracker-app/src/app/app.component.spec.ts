@@ -1,5 +1,6 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { BugTrackerComponent } from './bugTracker/bugTracker.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
