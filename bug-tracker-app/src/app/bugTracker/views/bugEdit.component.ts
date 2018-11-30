@@ -1,6 +1,6 @@
 import { Component, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
-import { BugOperationsService } from '../services/bugOperations.service';
 import { Bug } from '../models/Bug';
+import { BugApiService } from '../services/bugApi.service';
 
 @Component({
 	selector : 'app-bug-edit',
@@ -20,13 +20,13 @@ export class BugEditComponent{
 	@Output()
 	bugCreated : EventEmitter<Bug> = new EventEmitter<Bug>();
 
-	constructor(private bugOperations : BugOperationsService){
+	constructor(private bugApi : BugApiService){
 
 	}
 	onAddNewClick(){
-		const newBug = this.bugOperations.createNew(this.newBugName);
-		//this.bugs.push(newBug);
-		//this.bugs = [...this.bugs, newBug];
-		this.bugCreated.emit(newBug);
+		this.bugApi
+			.addNew(this.newBugName)
+			.subscribe(newBug => this.bugCreated.emit(newBug));
+		;
 	}
 }

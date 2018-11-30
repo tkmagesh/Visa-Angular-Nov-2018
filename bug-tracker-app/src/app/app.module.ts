@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { BugTrackerComponent } from './bugTracker/bugTracker.component';
@@ -15,6 +16,8 @@ import { BugDisplayComponent } from './bugTracker/views/bugDisplay.component';
 
 import { UtilsModule } from './utils/utils.module';
 
+import { BugApiService } from './bugTracker/services/bugApi.service';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -28,9 +31,11 @@ import { UtilsModule } from './utils/utils.module';
   imports: [
     BrowserModule
     , UtilsModule
+    , HttpClientModule
   ],
   providers: [
   	BugOperationsService
+    , BugApiService
   ],
   bootstrap: [AppComponent]
 })

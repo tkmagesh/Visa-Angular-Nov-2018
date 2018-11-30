@@ -1,6 +1,6 @@
 import {Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Bug } from '../models/Bug';
-import { BugOperationsService } from '../services/bugOperations.service';
+import { BugApiService } from '../services/bugApi.service';
 
 @Component({
 	selector : 'app-bug-item',
@@ -20,12 +20,14 @@ export class BugItemComponent{
 	@Output()
 	toggled : EventEmitter<Bug> = new EventEmitter<Bug>();
 
-	constructor(private bugOperations : BugOperationsService){
+	constructor(private bugApi : BugApiService){
 
 	}
 	onBugClick(bugToToggle : Bug){
-		let toggledBug = this.bugOperations.toggle(bugToToggle);
-		this.toggled.emit(toggledBug);
+		this.bugApi
+			.toggle(bugToToggle)
+			.subscribe(toggledBug => this.toggled.emit(toggledBug));
+		
 
 	}
 }

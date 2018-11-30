@@ -3,7 +3,7 @@ import * as moment from 'moment';
 
 @Pipe({
 	name: 'elapsed',
-	pure : false
+	pure : true
 })
 export class ElapsedPipe implements PipeTransform {
 	transform(value: any, args: any[]): any {
