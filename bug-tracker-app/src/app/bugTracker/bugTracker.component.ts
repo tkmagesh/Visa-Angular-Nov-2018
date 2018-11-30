@@ -12,7 +12,7 @@ export class BugTrackerComponent{
 	sortBugBy : string = 'name';
 	sortBugDesc :  boolean = false;
 
-	newBugName : string = '';
+	
 
 	constructor(private bugOperations : BugOperationsService){
 		this.bugs.push(this.bugOperations.createNew('Server communicaiton failure'));
@@ -20,9 +20,8 @@ export class BugTrackerComponent{
 		this.bugs.push(this.bugOperations.createNew('Data integrity checks failed'));
 		this.bugs.push(this.bugOperations.createNew('Application not responding'));
 	}
-	onAddNewClick(){
-		const newBug = this.bugOperations.createNew(this.newBugName);
-		//this.bugs.push(newBug);
+	
+	onBugCreated(newBug : Bug){
 		this.bugs = [...this.bugs, newBug];
 	}
 
