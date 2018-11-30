@@ -11,28 +11,29 @@ export class BugTrackerComponent{
 
 	sortBugBy : string = 'name';
 	sortBugDesc :  boolean = false;
-	
+
+	newBugName : string = '';
+
 	constructor(private bugOperations : BugOperationsService){
 		this.bugs.push(this.bugOperations.createNew('Server communicaiton failure'));
 		this.bugs.push(this.bugOperations.createNew('User actions not recognized'));
 		this.bugs.push(this.bugOperations.createNew('Data integrity checks failed'));
 		this.bugs.push(this.bugOperations.createNew('Application not responding'));
 	}
-	onAddNewClick(newBugName : string){
-		const newBug = this.bugOperations.createNew(newBugName);
-		this.bugs.push(newBug);
+	onAddNewClick(){
+		const newBug = this.bugOperations.createNew(this.newBugName);
+		//this.bugs.push(newBug);
+		this.bugs = [...this.bugs, newBug];
 	}
 
 	onBugClick(bugToToggle : Bug){
 		this.bugOperations.toggle(bugToToggle)
+		this.bugs = [...this.bugs];
 	}
 
 	onRemoveClosedClick(){
 		this.bugs = this.bugs.filter(bug => !bug.isClosed);
 	}
 
-	getClosedCount(){
-		return this.bugs.reduce((result, bug) => bug.isClosed ? ++result : result, 0);
-	}
 
 }

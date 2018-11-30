@@ -9,6 +9,8 @@ export class BugOperationsService{
 		return newBug;
 	}
 	toggle(bugToToggle : Bug) : void {
+		/*const toggledBug = { ...bugToToggle, isClosed : false};
+		return toggledBug;*/
 		bugToToggle.isClosed = !bugToToggle.isClosed;
 	}
 }
